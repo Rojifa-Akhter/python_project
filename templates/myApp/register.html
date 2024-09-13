@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+
+{% block title %} 
+     {{title}}
+    
+{% endblock title %}
+
+{% block content %}
+
+<h1> this is create page </h1>
+
+<form method="POST">
+
+{% csrf_token %}
+<div class="form-group first">
+    <label for="username"> Username</label>
+    {{form.username}}
+</div>
+<div class= "form-group first">
+    <label for="password"> Password</label>
+    {{form.password}}
+</div>
+
+<button type="submit" class="btn btn-primary">Save</button>
+
+
+</form>
+{% endblock %}

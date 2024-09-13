@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+        DEMO
+{% endblock title %}
+
+{% block content %}
+
+
+  <a href="{% url 'Create'%}" class="btn btn-primary">Add New Record</a>
+  <hr>
+
+<table class="table table-triped" id="stdtable">
+    <thead>
+        <th scope="col">Student ID</th>
+        <th scope="col">Student Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Date of Birth</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Remarks</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- django expression tamplate tag -->
+      {% for student in students%}
+      <tr>
+        <td>{{ student.id }}</td>
+        <td>{{ student.name|title }}</td>
+        <td>{{ student.email }}</td>
+        <td>{{ student.dob}}</td>
+        <td>{{ student.gender }}</td>
+        <td>{{ student.remarks}}</td>
+        <td>
+          <!-- <a href="{% url 'details' student.id%}"><i class='fa fa-info-circle' style="font-size: 0%;"></i>Info</a> -->
+          <a href="{% url 'details' student.id %}"><i class='fa fa-info-circle fa-2x'></i></a>
+          <a href="{% url 'edit' student.id %}"><i class='fa fa-edit fa-2x'></i></a>
+          <a onclick="return confirm('Are you sure you want to delete this?')" href="#"><i class='fa fa-trash fa-2x'></i></a>
+        </td>
+      </tr>
+      {% endfor %}
+      
+    </tbody>
+  </table>
+{% endblock content %}
